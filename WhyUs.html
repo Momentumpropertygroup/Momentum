@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Us? - Monument Properties</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+     <header>
+        <div class="logo-container">
+            <img src="Pictures/Logo.jpg" alt="Trinity Properties Logo">
+            <div class="company-name">
+                <span class="Trinity">Monument</span><span class="Properties">Properties</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Real-Estate.html">Properties</a>
+            <a href="Services.html">Services</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="WhyUs.html">Why Us?</a>
+        </nav>
+        <div class="icons-container">
+            <div class="search-container">
+                <form id="search-form">
+                    <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+                    <input type="text" id="search-input" class="search-bar" placeholder="Search Properties...">
+                </form>
+            </div>
+            <div class="user-container">
+                <i class="fas fa-user" onclick="toggleAuthModal()"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login/Signup Modal -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-form">
+            <span class="close-btn" onclick="toggleAuthModal()">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="showTab('login')">Login</button>
+                <button class="tab-btn" onclick="showTab('signup')">Sign Up</button>
+            </div>
+            <!-- Login Form -->
+            <div class="form-section active" id="login">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="Email" placeholder="Enter your email" required>
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="Password" placeholder="Enter your password" required>
+                    <button type="submit">Login</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+            <!-- Signup Form -->
+            <div class="form-section" id="signup">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" name="Full Name" placeholder="Enter your full name" required>
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="Email" placeholder="Enter your email" required>
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="Password" placeholder="Create a password" required>
+                    <button type="submit">Sign Up</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section class="why-us-hero">
+            <h1>Why Choose Monument Properties?</h1>
+            <p>Invest in a lifestyle that promises unparalleled value and growth.</p>
+        </section>
+        <section class="why-us-content">
+            <div class="content-wrapper">
+                <h2>The Value of Riverfront Investment</h2>
+                <p>It is said that “One should never have the most expensive house in a cheap neighbourhood. Rather settle for the cheapest house in an expensive neighbourhood”. Whilst this is sound advice for established communities, it does not pertain to vacant land, or rather stands, within a new development.</p>
+                <p>Century Property Developments, in partnership with Trinity Properties, currently offers four different estates where a river ribbons through the secure development. It is never a surprise when we see riverfront developer stands being the last to be sold. The reason for this is simple: investors tend to purchase the cheaper stands first, to minimize the risk of owning the most expensive house in an estate that could be considered a failure upon completion. The irony, however, is that riverfront stands consistently yield the best returns—and you rarely get the opportunity to invest in such stands in an estate already heralded as a massive success in the property industry!</p>
+                <h3>Helderfontein Residential Estate: A Case Study</h3>
+                <p>For example, let’s examine Helderfontein Residential Estate. The last few stands are situated along the riverside, at slightly higher prices than other stands in that phase. This might seem surprising, given the scenic river views and ample foliage that shelters these stands from houses on the other side. While prospective buyers may wonder if these stands are priced too high compared to others in the development, the truth is far from it. These stands are the buy of the century, and here’s why:</p>
+                <p>In Waterfall, you cannot find a riverfront stand for under R4.5 million. This is a simple matter of supply and demand. Waterfall Estates is now an established neighbourhood, boosting investor confidence—but there are no more riverfront stands available, as very few were ever released. Simply put, these are the best stands in the estate. Remarkably, riverfront stands in Helderfontein are even more pristine than in our other developments, yet they are often the last to sell.</p>
+                <p>Imagine being the first investor to purchase a vacant riverfront stand at Waterfall Estates directly from the developer. That individual would have made their money back threefold since the launch. Current prices indicate that these stands have, on average, increased by R1.5 million. Moreover, houses on the river gain an additional R1.5 million in value purely due to their position within the estate, regardless of fittings, finishes, or design aesthetics. You simply cannot find a house on the river for less than R14 million, and not all are architectural masterpieces.</p>
+                <h3>Comparative Market Insights</h3>
+                <p>When considering a riverfront stand, look at trends from nearby developments. Steyn City, adjacent to Helderfontein Residential Estate, has riverfront stands starting at R7.2 million. In Dainfern Estate, no riverfront stands are available. Modifying an existing house in these areas could cost over R2 million to bring it up to date. By contrast, riverfront stands in Helderfontein start at R3.29 million—arguably the best investment in the current property market. Investors who have already purchased these stands can expect a R1 million increase in value over the next year as houses develop in this phase, assuming any stands remain available.</p>
+                <p>Investors researching the area will quickly realize that no other developments along the river match Helderfontein’s unique offering. Most riverfront estates cater to high-density apartments, as these provide large-scale developers the best return on investment in the shortest time. If you’re looking to build your dream home on vacant land, investing more in stand positioning will significantly increase your investment’s value without requiring enhanced features in the house’s design.</p>
+                <a href="Real-Estate.html" class="cta-button">Explore Our Estates</a>
+            </div>
+        </section>
+        <section class="testimonials">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Monument Properties guided us to the perfect riverfront stand in Helderfontein. The investment has already appreciated significantly!"</p>
+                    <h4>Sarah & James M.</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Their expertise in estate investments is unmatched. We feel confident in our decision to invest with Trinity."</p>
+                    <h4>David L.</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The team’s dedication and market insights made our purchase seamless and rewarding."</p>
+                    <h4>Emily R.</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Monument Properties. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

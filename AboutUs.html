@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Monument Properties</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />>
+</head>
+<body>
+      <header>
+        <div class="logo-container">
+            <img src="Pictures/Logo.jpg" alt="Trinity Properties Logo">
+            <div class="company-name">
+                <span class="Trinity">Monument</span><span class="Properties">Properties</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Real-Estate.html">Properties</a>
+            <a href="Services.html">Services</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="WhyUs.html">Why Us?</a>
+        </nav>
+        <div class="icons-container">
+            <div class="search-container">
+                <form id="search-form">
+                    <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+                    <input type="text" id="search-input" class="search-bar" placeholder="Search Properties...">
+                </form>
+            </div>
+            <div class="user-container">
+                <i class="fas fa-user" onclick="toggleAuthModal()"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login/Signup Modal -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-form">
+            <span class="close-btn" onclick="toggleAuthModal()">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="showTab('login')">Login</button>
+                <button class="tab-btn" onclick="showTab('signup')">Sign Up</button>
+            </div>
+            <!-- Login Form -->
+            <div class="form-section active" id="login">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="Email" placeholder="Enter your email" required>
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="Password" placeholder="Enter your password" required>
+                    <button type="submit">Login</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+            <!-- Signup Form -->
+            <div class="form-section" id="signup">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" name="Full Name" placeholder="Enter your full name" required>
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="Email" placeholder="Enter your email" required>
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="Password" placeholder="Create a password" required>
+                    <button type="submit">Sign Up</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--AboutUs-->
+    <main>
+        <section class="about-hero">
+            <h1>About Monument Properties</h1>
+            <p>Building sanctuaries for modern living.</p>
+        </section>
+
+        <section class="about-content">
+            <div class="content-wrapper">
+                <h2>Our Mission</h2>
+                <p>At Monument Properties, we believe that a home is more than a roof over your head - it's a sanctuary, a foundation for your future, and the heart of your lifestyle. As a premier real estate company, we specialize in offering high-quality tailored to meet the evolving needs of modern living</p>
+                <p>With a deep understanding of the real estate market and a passion for creating vibrant, secure, and sustainable communities, Trinity Properties is committed to providing exceptional value through thoughtfully designed homes, luxury amenities, and personalized tenant care.</p>
+                <p>We don't just build houses - we cultivate environments where individuals and families can thrive.</p>
+
+                <h2>Company Insight: The Monument Way</h2>
+                <p>At Monument Properties, we view every tenant not as a client, but as family</p>
+                <p>From your first inquiry  to the day you move in  and beyond, our team is here to support, serve, and elevate your living experience. We prioritize open communication, timely maintenance, and community connection - ensuring your home is a place of trust, warmth, and lasting memories </p>
+                <p>Whether you're starting a family,launching your career, or enjoying retirement, we have a place for you. Because at Trinity, you're not just leasing a property - you're joining a lifestyle. </p>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="contact-wrapper">
+                <h2>Contact Us</h2>
+                <p>Ready To Join the Monument Lifestyle? Get in touch with our team today!</p>
+                <form action="https://formspree.io/f/mpwloreq" method="POST" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i>+27 71 801 9409  or 015 099 1220</p>
+                    <p><i class="fas fa-envelope"></i>Monumentpropertygroup@outlook.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>123 Willows St, Cape Town, 0699</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Monument Properties. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

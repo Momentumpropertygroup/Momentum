@@ -1,0 +1,1859 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: grey;
+    color: white;
+}
+
+/* Header Styles */
+header {
+    background-color: #1a1a1a;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 125px;
+    height: 125px;
+    margin-right: 15px;
+}
+
+.company-name {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.company-name .Trinity {
+    color: gold;
+}
+
+.company-name .Properties {
+    color: #ffffff;
+}
+
+.company-name .Trinity:hover,
+.company-name .Properties:hover {
+    opacity: 0.5;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 80%;
+}
+
+nav a:hover {
+    color: gold;
+}
+
+/* Icons Container (Search and User) */
+.icons-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-container .fa-search {
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.search-container .fa-search:hover {
+    color: gold;
+    transform: scale(1.2);
+}
+
+.search-bar {
+    width: 0;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    height: 30px;
+    background-color: #ffffff;
+    transition: width 0.3s ease, padding 0.3s ease;
+    outline: none;
+    position: absolute;
+    right: 30px; /* Adjusted to account for user icon */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-bar.active {
+    width: 200px;
+    padding: 0 10px;
+}
+
+/* User Container */
+.user-container {
+    display: flex;
+    align-items: center;
+}
+
+.user-container .fa-user {
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.user-container .fa-user:hover {
+    color: gold;
+    transform: scale(1.2);
+}
+
+/* Login/Signup Modal */
+.auth-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-modal.active {
+    display: flex;
+}
+
+.auth-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 30px yellow;
+    position: relative;
+    animation: fadeInDown 0.5s ease-out;
+}
+
+/* Close Button */
+.auth-form .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.auth-form .close-btn:hover {
+    color: gold
+}
+
+/* Tab Navigation */
+.auth-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.auth-tabs button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.auth-tabs button.active {
+    color: gold
+}
+
+.auth-tabs button::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: gold
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.auth-tabs button.active::after,
+.auth-tabs button:hover::after {
+    width: 80%;
+}
+
+.auth-tabs button:hover {
+    color: gold;
+}
+
+/* Form Sections */
+.auth-form .form-section {
+    display: none;
+}
+
+.auth-form .form-section.active {
+    display: block;
+}
+
+/* Form Inputs */
+.auth-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid gold;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form input[type="email"]:focus,
+.auth-form input[type="password"]:focus,
+.auth-form input[type="text"]:focus {
+    border-color: gold;
+    box-shadow: 0 0 10px yellow;
+    outline: none;
+}
+
+.auth-form input[type="email"]::placeholder,
+.auth-form input[type="password"]::placeholder,
+.auth-form input[type="text"]::placeholder {
+    color: #999;
+}
+
+/* Submit Button */
+.auth-form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: gold;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
+}
+
+.auth-form button[type="submit"]:hover {
+    background: gold;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px yellow;
+}
+
+/* Home Hero Section */
+.home-hero {
+    background: linear-gradient(135deg, yellow, rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-hero h1 {
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+.home-hero p {
+    font-size: 24px;
+    color: gold;
+    max-width: 600px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: gold;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease-out 0.6s;
+    animation-fill-mode: both;
+    box-shadow: 0 0 15px yellow;
+}
+
+.learn-more-btn:hover {
+    background: gold;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px yellow;
+}
+
+/* About Hero Section */
+.about-hero {
+    background: linear-gradient(135deg, yellow, rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 80px; /* Offset for fixed header */
+}
+
+.about-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.about-hero p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-style: italic;
+    color: gold;
+}
+
+/* About Content Section */
+.about-content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.content-wrapper h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.content-wrapper h2:hover::after {
+    width: 100px;
+}
+
+.content-wrapper h2:hover {
+    transform: scale(1.05);
+}
+
+.content-wrapper p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/*Contact Section*/
+.contact-section{
+    background: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contact-wrapper{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-wrapper h2{
+    font-size: 32px;
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.contact-wrapper p{
+    font-size:18px;
+    color: #665;
+    margin-bottom: 20px;
+}
+
+#contact-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin:0 auto 20px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label{
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input, 
+.form-group textarea{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color: gold;
+}
+
+.form-group textarea{
+    resize:vertical;
+    min-height: 100px;
+}
+
+#contact-form button{
+    padding: 12px;
+    background:gold;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#contact-form button:hover{
+    background:yellow;
+}
+
+.contact-info{
+    margin-top: 20px;
+}
+
+.contact-info p{
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.contact-info i{
+    color: gold;
+    margin-right: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: gold;
+}
+
+/*Real -Estate CSS*/
+/* Hero Section */
+.real-estates-hero {
+    background: linear-gradient(135deg, yellow, rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 80px; /* Offset for fixed header */
+}
+
+.real-estates-hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+.real-estates-hero p {
+    font-size: 20px;
+    color: gold;
+    max-width: 600px;
+    font-style: italic;
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+/* Filter Section */
+.filter-section {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.filter-section label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-right: 10px;
+}
+
+.filter-section select {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid gold;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ffffff;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.filter-section select:focus {
+    outline: none;
+    border-color: yellow;
+    transform: scale(1.05);
+}
+
+/* Properties Grid */
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Property Card Styles */
+.property-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, gold, yellow);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.property-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px yellow;
+}
+
+.property-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.property-card img:hover {
+    transform: scale(1.05);
+}
+
+.property-card h3 {
+    font-size: 24px;
+    color: gold;
+    margin: 15px;
+    text-align: center;
+}
+
+.property-card p {
+    font-size: 16px;
+    color: #333;
+    margin: 0 15px 10px;
+    line-height: 1.5;
+}
+
+.property-card button.view-details {
+    display: block;
+    width: calc(100% - 30px);
+    margin: 15px auto;
+    padding: 10px;
+    background: gold;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.property-card button.view-details:hover {
+    background: yellow;
+    transform: scale(1.05);
+}
+
+/* Dropdown Styles */
+.details-dropdown {
+    max-height: 0;
+    padding: 0 15px;
+    background: #f9f9f9;
+    border-top: 1px solid #ccc;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.details-dropdown.active {
+    max-height: 400px; /* Increased to accommodate carousel */
+    padding: 15px;
+}
+
+.details-dropdown img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.details-dropdown p {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+
+/* Apartments Card Styles */
+.apartments-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, gold, yellow);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.apartments-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px yellow;
+}
+
+.apartments-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.apartments-card button {
+    display: block;
+    width: calc(100% - 30px);
+    margin: 15px auto;
+    padding: 10px;
+    background: gold;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.apartments-card button:hover {
+    background: yellow;
+    transform: scale(1.05);
+}
+
+/* Apartments Section Styles */
+.apartments-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.apartments-section h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: gold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+.apartments-section h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.apartments-section h2:hover::after {
+    width: 100px;
+}
+
+.apartments-section p {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.apartments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #f0f0f0;
+}
+
+.carousel-images {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-image.active {
+    display: block;
+    opacity: 1;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: yellow;
+    color: #ffffff;
+    border: none;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: yellow;
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+}
+
+.carousel-prev {
+    left: 15px;
+}
+
+.carousel-next {
+    right: 15px;
+}
+
+/* Ensure dropdown accommodates carousel height */
+.details-dropdown.active {
+    max-height: 450px; /* Increased to fit carousel and text */
+    padding: 20px;
+}
+
+.details-dropdown.active .carousel {
+    max-height: 200px;
+}
+
+/* Why Our Estates Section */
+.why-estates {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.why-estates h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: gold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.why-estates h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.why-estates h2:hover::after {
+    width: 100px;
+}
+
+.why-estates h2:hover {
+    transform: scale(1.05);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.benefit-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px yellow;
+}
+
+.benefit-icon {
+    font-size: 40px;
+    color: gold;
+    margin-bottom: 15px;
+}
+
+.benefit-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.benefit-card p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Agents Section */
+.agents-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.agents-section h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.agents-section h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.agents-section h2:hover::after {
+    width: 100px;
+}
+
+.agents-section h2:hover {
+    transform: scale(1.05);
+}
+
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.agent {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, gold, yellow);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.agent:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px yellow30;
+}
+
+.agent-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 10px;
+    border: 3px solid gold;
+}
+
+.agent h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.agent p {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.whatsapp-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    background: #25D366;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.whatsapp-link:hover {
+    background: #1ebe52;
+    transform: scale(1.05);
+}
+
+.whatsapp-link i {
+    margin-right: 8px;
+}
+
+/*Service Grid*/
+.services-hero {
+    background: linear-gradient(135deg, yellow, rgba(0, 0, 0, 0.7)), url('Pictures/spa-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 80px; /* Offset for fixed header */
+}
+
+.services-hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+.services-hero p {
+    font-size: 20px;
+    color: gold;
+    max-width: 600px;
+    font-style: italic;
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.service-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, gold, yellow);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px yellow;
+}
+
+.service-icon {
+    font-size: 40px;
+    color: gold;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.2);
+}
+
+.service-card h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Description Section */
+.services-description {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+}
+
+.services-description h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.services-description h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.services-description h2:hover::after {
+    width: 100px;
+}
+
+.services-description h2:hover {
+    transform: scale(1.05);
+}
+
+.services-description p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Call-to-Action Section */
+.bookings-page {
+    background: linear-gradient(135deg, yellow, rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1515377905703-c4788e51c332?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 40px 20px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Booking Form Container */
+.bookings-page .booking-form {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 0 30px yellow;
+    backdrop-filter: blur(8px);
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Form Heading */
+.bookings-page h2 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.bookings-page h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.bookings-page h2:hover::after {
+    width: 120px;
+}
+
+.bookings-page h2:hover {
+    transform: scale(1.05);
+}
+
+/* Form Paragraph */
+.bookings-page p {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+/* Form Sections */
+.bookings-page .form-section {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Labels */
+.bookings-page label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Inputs, Selects, and Textarea */
+.bookings-page input[type="text"],
+.bookings-page input[type="email"],
+.bookings-page input[type="tel"],
+.bookings-page input[type="date"],
+.bookings-page input[type="time"],
+.bookings-page select,
+.bookings-page textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid yellow;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #1a1a1a;
+    font-size: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.bookings-page input[type="text"]::placeholder,
+.bookings-page input[type="email"]::placeholder,
+.bookings-page input[type="tel"]::placeholder,
+.bookings-page textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bookings-page input[type="text"]:focus,
+.bookings-page input[type="email"]:focus,
+.bookings-page input[type="tel"]:focus,
+.bookings-page input[type="date"]:focus,
+.bookings-page input[type="time"]:focus,
+.bookings-page select:focus,
+.bookings-page textarea:focus {
+    border: 2px solid gold;
+    box-shadow: 0 0 15px yellow;
+    transform: scale(1.02);
+    outline: none;
+}
+
+.bookings-page textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Submit Button */
+.bookings-page .book-now-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: gold;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px yellow;
+    animation: fadeInUp 1s ease-out 0.6s;
+    animation-fill-mode: both;
+}
+
+.bookings-page .book-now-btn:hover {
+    background: yellow;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px yellow;
+}
+
+/*Why Us Page*/
+.why-us-hero {
+    background: linear-gradient(135deg, yellow, rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 80px; /* Offset for fixed header */
+}
+
+.why-us-hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+.why-us-hero p {
+    font-size: 20px;
+    color: gold;
+    max-width: 600px;
+    font-style: italic;
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+/* Content Section */
+.why-us-content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+}
+
+.content-wrapper h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: gold;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.content-wrapper h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.content-wrapper h2:hover::after {
+    width: 100px;
+}
+
+.content-wrapper h2:hover {
+    transform: scale(1.05);
+}
+
+.content-wrapper h3 {
+    font-size: 24px;
+    color: gold;
+    margin: 20px 0 10px;
+    text-align: left;
+}
+
+.content-wrapper p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: gold;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    max-width: 200px;
+    box-shadow: 0 0 15px yellow);
+}
+
+.cta-button:hover {
+    background: yellow;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px gold;
+}
+
+/* Testimonials Section */
+.testimonials {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: gold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.testimonials h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: gold;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.testimonials h2:hover::after {
+    width: 100px;
+}
+
+.testimonials h2:hover {
+    transform: scale(1.05);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.testimonial-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, gold, yellow);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px yellow;
+}
+
+.testimonial-card p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.testimonial-card h4 {
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* General Form Styles */
+.rental-form {
+    background: linear-gradient(135deg, yellow, rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 20px auto;
+    box-shadow: 0 0 30px gold;
+}
+
+/* Form Heading */
+.rental-form h2 {
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Section Styling */
+.rental-form .section {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 700px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+/* Labels */
+.rental-form label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Inputs, Textareas, and Selects */
+.rental-form input[type="text"],
+.rental-form input[type="date"],
+.rental-form input[type="tel"],
+.rental-form input[type="email"],
+.rental-form input[type="number"],
+.rental-form textarea,
+.rental-form select,
+.rental-form input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid yellow;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #1a1a1a;
+    font-size: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.rental-form input[type="text"]::placeholder,
+.rental-form input[type="tel"]::placeholder,
+.rental-form input[type="email"]::placeholder,
+.rental-form input[type="number"]::placeholder,
+.rental-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.rental-form input[type="text"]:focus,
+.rental-form input[type="date"]:focus,
+.rental-form input[type="tel"]:focus,
+.rental-form input[type="email"]:focus,
+.rental-form input[type="number"]:focus,
+.rental-form textarea:focus,
+.rental-form select:focus,
+.rental-form input[type="file"]:focus {
+    border: 2px solid gold;
+    box-shadow: 0 0 15px yellow;
+    transform: scale(1.02);
+    outline: none;
+}
+
+.rental-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Consent Text and Checkbox */
+.rental-form .consent-text {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.rental-form label input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.2);
+}
+
+/* Submit Button */
+.rental-form button[type="submit"] {
+    display: inline-block;
+    padding: 16px 40px;
+    background: gold;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease-out 0.6s;
+    animation-fill-mode: both;
+    box-shadow: 0 0 20px yellow;
+}
+
+.rental-form button[type="submit"]:hover {
+    background: gold;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px yellow;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .logo-container {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .icons-container {
+        gap: 15px;
+    }
+
+    .search-bar.active {
+        width: 100%;
+        right: 0;
+    }
+
+    .home-hero h1 {
+        font-size: clamp(24px, 8vw, 32px);
+    }
+
+    .home-hero p {
+        font-size: clamp(14px, 5vw, 16px);
+    }
+
+    .about-hero,
+    .real-estates-hero,
+    .services-hero,
+    .why-us-hero {
+        min-height: 40vh;
+    }
+
+    .properties-grid,
+    .benefits-grid,
+    .agents-grid,
+    .services-grid,
+    .testimonials-grid,
+    .apartments-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-form,
+    .bookings-page .booking-form {
+        padding: 20px;
+    }
+
+    .rental-form h2,
+    .bookings-page h2 {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+
+    .carousel {
+        height: 150px;
+    }
+
+    .carousel-image {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .company-name {
+        font-size: clamp(14px, 5vw, 16px);
+    }
+
+    .auth-form {
+        padding: 15px;
+    }
+
+    .auth-tabs button {
+        font-size: clamp(14px, 4vw, 16px);
+    }
+
+    .property-card img,
+    .details-dropdown img {
+        height: 150px;
+    }
+
+    .agent-photo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .carousel {
+        height: 120px;
+    }
+
+    .carousel-image {
+        height: 120px;
+    }
+}

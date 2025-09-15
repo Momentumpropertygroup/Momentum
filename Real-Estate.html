@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estates - Monument Properties</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="Pictures/Logo.jpg" alt="Trinity Properties Logo">
+            <div class="company-name">
+                <span class="Trinity">Monument</span><span class="Properties">Properties</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Real-Estate.html">Properties</a>
+            <a href="Services.html">Services</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="WhyUs.html">Why Us?</a>
+        </nav>
+        <div class="icons-container">
+            <div class="search-container">
+                <form id="search-form">
+                    <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+                    <input type="text" id="search-input" class="search-bar" placeholder="Search Properties...">
+                </form>
+            </div>
+            <div class="user-container">
+                <i class="fas fa-user" onclick="toggleAuthModal()"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login/Signup Modal -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-form">
+            <span class="close-btn" onclick="toggleAuthModal()">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="showTab('login')">Login</button>
+                <button class="tab-btn" onclick="showTab('signup')">Sign Up</button>
+            </div>
+            <!-- Login Form -->
+            <div class="form-section active" id="login">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="Email" placeholder="Enter your email" required>
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="Password" placeholder="Enter your password" required>
+                    <button type="submit">Login</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+            <!-- Signup Form -->
+            <div class="form-section" id="signup">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" name="Full Name" placeholder="Enter your full name" required>
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="Email" placeholder="Enter your email" required>
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="Password" placeholder="Create a password" required>
+                    <button type="submit">Sign Up</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="real-estates-hero">
+            <h1>Lifestyle Experience Across 8 Key Suburban Areas</h1>
+            <p>Discover the perfect home in one of our handpicked suburban communities, designed for comfort, convenience, and connection.</p>
+        </section>
+        <section class="filter-section">
+            <label for="lifestyle-filter">Filter by Location: </label>
+            <select id="lifestyle-filter">
+                <option value="all">All</option>
+                <option value="Pretoria">Pretoria</option>
+                <option value="Johannesburg">Johannesburg</option>
+            </select>
+        </section>
+        <section class="properties-grid">
+            <div class="property-card" data-lifestyle="Pretoria">
+                <img src="Pictures/The Blyde.jpg" alt="The Blyde Riverwalk Estate">
+                <h3>The Blyde Riverwalk Estate</h3>
+                <p><strong>Description:</strong> Known for its lagoon/beach lifestyle, its apartments and units are more affordable compared to luxury estates.</p>
+                <p><strong>Extras:</strong> Extremely popular with students, young couples, and investors.</p>
+                <p><strong>Pricing:</strong> Bachelor: R650,000 | 2-Bedroom: R1,200,000</p>
+                <p><strong>Location:</strong> Bronkhorstspruit Road, Pretoria-East.</p>
+                <button class="view-details" data-property="blyde-riverwalk" onclick="toggleDetails('blyde-riverwalk')">View Details</button>
+                <div class="details-dropdown" id="dropdown-blyde-riverwalk">
+                    <img src="Pictures/H1.jpg" alt="Blyde Riverwalk 2-Bedroom">
+                    <p>Spacious 2-bedroom apartment with modern amenities, secure parking, and access to lagoon facilities.</p>
+                </div>
+            </div>
+            <div class="property-card" data-lifestyle="Pretoria">
+                <img src="Pictures/ELANDE RIVER.jpg" alt="Elands Rock Nature Estate">
+                <h3>Elands Rock Nature Estate</h3>
+                <p><strong>Description:</strong> Offers a natural environment and basic security features, units and homes are priced more reasonably than nearby luxury estates.</p>
+                <p><strong>Pricing:</strong> Bachelor: R790,000 | 2-Bedroom: R1,800,000</p>
+                <p><strong>Location:</strong> Mooikloof, Pretoria-East.</p>
+                <button class="view-details" data-property="elands-rock" onclick="toggleDetails('elands-rock')">View Details</button>
+                <div class="details-dropdown" id="dropdown-elands-rock">
+                    <img src="Pictures/H2.jpg" alt="Elands Rock 2-Bedroom">
+                    <p>Spacious 2-bedroom apartment with nature views, secure parking, and community amenities.</p>
+                </div>
+            </div>
+            <div class="property-card" data-lifestyle="Pretoria">
+                <img src="Pictures/Adeon.jpg" alt="Andeon Estate">
+                <h3>Andeon Estate</h3>
+                <p><strong>Description:</strong> Gated estate with entry-level townhouses and apartments.</p>
+                <p><strong>Extras:</strong> Great for first-time buyers and small families.</p>
+                <p><strong>Pricing:</strong> Bachelor: R600,000 | 2-Bedroom: R1,100,000</p>
+                <p><strong>Location:</strong> Andeon, Pretoria-West.</p>
+                <button class="view-details" data-property="andeon" onclick="toggleDetails('andeon')">View Details</button>
+                <div class="details-dropdown" id="dropdown-andeon">
+                    <img src="Pictures/H3.jpg" alt="Andeon 2-Bedroom">
+                    <p>Cozy 2-bedroom apartment with modern finishes and secure gated access.</p>
+                </div>
+            </div>
+            <div class="property-card" data-lifestyle="Pretoria">
+                <img src="Pictures/SIXFOUNTAINS.jpg" alt="Six Fountains Residential Estate">
+                <h3>Six Fountains Residential Estate</h3>
+                <p><strong>Description:</strong> A peaceful, mid-priced estate with security and nature elements, generally more affordable than Silver Lakes itself.</p>
+                <p><strong>Pricing:</strong> Bachelor: R800,000 | 2-Bedroom: R1,700,000</p>
+                <p><strong>Location:</strong> Silver Lakes Road, Pretoria-East.</p>
+                <button class="view-details" data-property="six-fountains" onclick="toggleDetails('six-fountains')">View Details</button>
+                <div class="details-dropdown" id="dropdown-six-fountains">
+                    <img src="Pictures/H4.jpg" alt="Six Fountains 2-Bedroom">
+                    <p>Modern 2-bedroom apartment with access to nature trails and secure facilities.</p>
+                </div>
+            </div>
+            <div class="property-card" data-lifestyle="Johannesburg">
+                <img src="Pictures/Eco Estate.jpg" alt="Greenlee Eco Estate">
+                <h3>Greenlee Eco Estate</h3>
+                <p><strong>Description:</strong> Affordable apartments with great shared facilities.</p>
+                <p><strong>Lifestyle:</strong> Focused on energy efficiency and green living.</p>
+                <p><strong>Pricing:</strong> Bachelor: R550,000 | 2-Bedroom: R1,980,000</p>
+                <p><strong>Location:</strong> Linbro Park, Sandton/Johannesburg.</p>
+                <button class="view-details" data-property="greenlee-eco" onclick="toggleDetails('greenlee-eco')">View Details</button>
+                <div class="details-dropdown" id="dropdown-greenlee-eco">
+                    <img src="Pictures/H5.jpg" alt="Greenlee Eco 2-Bedroom">
+                    <p>Eco-friendly 2-bedroom apartment with solar power and green community spaces.</p>
+                </div>
+            </div>
+            <div class="property-card" data-lifestyle="Johannesburg">
+                <img src="Pictures/Golf Estate.jpg" alt="Jackal Creek Golf Estate">
+                <h3>Jackal Creek Golf Estate</h3>
+                <p><strong>Description:</strong> Budget-friendly units in a golf estate setup.</p>
+                <p><strong>Lifestyle:</strong> Popular for young professionals and small families.</p>
+                <p><strong>Pricing:</strong> Bachelor: R900,000 | 2-Bedroom: R1,150,000</p>
+                <p><strong>Location:</strong> North Riding, Randburg/Johannesburg-North.</p>
+                <button class="view-details" data-property="jackal-creek" onclick="toggleDetails('jackal-creek')">View Details</button>
+                <div class="details-dropdown" id="dropdown-jackal-creek">
+                    <img src="Pictures/H7.jpg" alt="Jackal Creek 2-Bedroom">
+                    <p>Modern 2-bedroom apartment with golf course views and community amenities.</p>
+                </div>
+            </div>
+            <div class="property-card" data-lifestyle="Johannesburg">
+                <img src="Pictures/Waterfall.jpg" alt="Water Fall Estate">
+                <h3>Water Fall Estate</h3>
+                <p><strong>Description:</strong> Very affordable estate, ideal for first-time home buyers.</p>
+                <p><strong>Lifestyle:</strong> Modern houses in a rapidly developing area.</p>
+                <p><strong>Pricing:</strong> Bachelor: R1,000,000 | 2-Bedroom: R1,999,000</p>
+                <p><strong>Location:</strong> Near Alberton & Palm Ridge, Johannesburg-South.</p>
+                <button class="view-details" data-property="water-fall" onclick="toggleDetails('water-fall')">View Details</button>
+                <div class="details-dropdown" id="dropdown-water-fall">
+                    <img src="Pictures/H8.jpg" alt="Water Fall 2-Bedroom">
+                    <p>Spacious 2-bedroom home with modern design and secure access.</p>
+                </div>
+            </div>
+            <div class="property-card" data-lifestyle="Johannesburg">
+                <img src="Pictures/Lions.jpg" alt="Lions Rest Estate">
+                <h3>Lions Rest Estate</h3>
+                <p><strong>Description:</strong> Secure estate offering homes at competitive pricing.</p>
+                <p><strong>Lifestyle:</strong> Family-oriented with good access to highways.</p>
+                <p><strong>Pricing:</strong> Bachelor: R490,000 | 2-Bedroom: R1,090,000</p>
+                <p><strong>Location:</strong> Albertsdal, Alberton/Johannesburg-South.</p>
+                <button class="view-details" data-property="lions-rest" onclick="toggleDetails('lions-rest')">View Details</button>
+                <div class="details-dropdown" id="dropdown-lions-rest">
+                    <img src="Pictures/H9.jpg" alt="Lions Rest 2-Bedroom">
+                    <p>Cozy 2-bedroom home with family-friendly amenities and secure access.</p>
+                </div>
+            </div>
+            <!-- Apartments Card -->
+            <div class="apartments-card">
+                <h3>There are more properties to explore. To do so, please click below.</h3>
+                <button class="view-more apartments" onclick="toggleApartments()">View More Apartments</button>
+            </div>
+        </section>
+
+        <!-- Apartments Section -->
+        <section class="apartments-section" id="apartments-section" style="display: none;">
+            <h2>Different Types of Apartments</h2>
+            <p>Explore various apartment options across our estates, including types, prices, locations, and detailed information.</p>
+            <div class="apartments-grid">
+                <!-- Apartment Card 1: Bachelor Apartment - The Blyde Riverwalk Estate -->
+                <div class="property-card" data-lifestyle="Pretoria">
+                    <img src="Pictures/The Blyde.jpg" alt="Bachelor Apartment in The Blyde Riverwalk Estate">
+                    <h3>Bachelor Apartment - The Blyde Riverwalk Estate</h3>
+                    <p><strong>Description:</strong> Compact unit ideal for students or singles, with access to lagoon and beach lifestyle.</p>
+                    <p><strong>Extras:</strong> Secure parking, community facilities.</p>
+                    <p><strong>Price:</strong> R650,000</p>
+                    <p><strong>Location:</strong> Bronkhorstspruit Road, Pretoria-East.</p>
+                    <button class="view-details" data-property="blyde-bachelor" onclick="toggleDetails('blyde-bachelor')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-blyde-bachelor">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A1/A1.jpg" alt="Bachelor Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A1/A2.jpg" alt="Bachelor Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A3.jpg" alt="Bachelor Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A4.jpg" alt="Bachelor Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A5.jpg" alt="Bachelor Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A6.jpg" alt="Bachelor Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A7.jpg" alt="Bachelor Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A8.jpg" alt="Bachelor Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A9.jpg" alt="Bachelor Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A1/A10.jpg" alt="Bachelor Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('blyde-bachelor', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('blyde-bachelor', 1)">&#10095;</button>
+                        </div>
+                        <p>Modern finishes, open-plan layout, and proximity to amenities.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 2: Bachelor Apartment - Adeon Estate -->
+                <div class="property-card" data-lifestyle="Pretoria">
+                    <img src="Pictures/Adeon.jpg" alt="Bachelor Apartment in Adeon Estate">
+                    <h3>Bachelor Apartment - Adeon Estate</h3>
+                    <p><strong>Description:</strong> Spacious apartment for young couples or small families, affordable luxury.</p>
+                    <p><strong>Extras:</strong> Balcony, gym access, investor-friendly.</p>
+                    <p><strong>Price:</strong> R600,000</p>
+                    <p><strong>Location:</strong> Andeon, Pretoria-West.</p>
+                    <button class="view-details" data-property="andeon-bachelor" onclick="toggleDetails('andeon-bachelor')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-andeon-bachelor">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A2/B1.jpg" alt="2-Bedroom Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A2/B2.jpg" alt="2-Bedroom Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B3.jpg" alt="2-Bedroom Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B4.jpg" alt="2-Bedroom Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B5.jpg" alt="2-Bedroom Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B6.jpg" alt="2-Bedroom Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B7.jpg" alt="2-Bedroom Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B8.jpg" alt="2-Bedroom Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B9.jpg" alt="2-Bedroom Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A2/B10.jpg" alt="2-Bedroom Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('andeon-bachelor', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('andeon-bachelor', 1)">&#10095;</button>
+                        </div>
+                        <p>Two bathrooms, modern kitchen, and scenic views.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 3: Bachelor Apartment - Elands Rock Nature Estate -->
+                <div class="property-card" data-lifestyle="Pretoria">
+                    <img src="Pictures/ELANDE RIVER.jpg" alt="Bachelor Apartment in Elands Rock Nature Estate">
+                    <h3>Bachelor Apartment - Elands Rock Nature Estate</h3>
+                    <p><strong>Description:</strong> Nature-inspired unit with basic security and reasonable pricing.</p>
+                    <p><strong>Extras:</strong> Hiking trails, pet-friendly.</p>
+                    <p><strong>Price:</strong> R790,000</p>
+                    <p><strong>Location:</strong> Mooikloof, Pretoria-East.</p>
+                    <button class="view-details" data-property="elands-bachelor" onclick="toggleDetails('elands-bachelor')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-elands-bachelor">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A3/C1.jpg" alt="Bachelor Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A3/C2.jpg" alt="Bachelor Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C3.jpg" alt="Bachelor Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C4.jpg" alt="Bachelor Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C5.jpg" alt="Bachelor Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C6.jpg" alt="Bachelor Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C7.jpg" alt="Bachelor Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C8.jpg" alt="Bachelor Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C9.jpg" alt="Bachelor Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A3/C10.jpg" alt="Bachelor Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('elands-bachelor', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('elands-bachelor', 1)">&#10095;</button>
+                        </div>
+                        <p>Cozy space surrounded by natural environment.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 4: 2-Bedroom Apartment - Greenlee Eco Estate -->
+                <div class="property-card" data-lifestyle="Johannesburg">
+                    <img src="Pictures/GREENLEE.jpg" alt="2-Bedroom Apartment in Greenlee Eco Estate">
+                    <h3>2-Bedroom Apartment - Greenlee Eco Estate</h3>
+                    <p><strong>Description:</strong> Eco-friendly apartment focused on sustainability and shared facilities.</p>
+                    <p><strong>Extras:</strong> Solar power, green spaces.</p>
+                    <p><strong>Price:</strong> R1,980,000</p>
+                    <p><strong>Location:</strong> Linbro Park, Sandton/Johannesburg.</p>
+                    <button class="view-details" data-property="greenlee-2bed" onclick="toggleDetails('greenlee-2bed')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-greenlee-2bed">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A4/D1.jpg" alt="2-Bedroom Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A4/D2.jpg" alt="2-Bedroom Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A4/D3.jpg" alt="2-Bedroom Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A4/D4.jpg" alt="2-Bedroom Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A4/D5.jpg" alt="2-Bedroom Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A4/D6.jpg" alt="2-Bedroom Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A4/D7.jpg" alt="2-Bedroom Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A4/D8.jpg" alt="2-Bedroom Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A4/D9.jpg" alt="2-Bedroom Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A4/Crop93x62.jpg" alt="2-Bedroom Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('greenlee-2bed', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('greenlee-2bed', 1)">&#10095;</button>
+                        </div>
+                        <p>Energy-efficient design with modern amenities.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 5: 2-Bedroom Apartment - Six Fountains Residential Estate -->
+                <div class="property-card" data-lifestyle="Johannesburg">
+                    <img src="Pictures/SIXFOUNTAINS.jpg" alt="2-Bedroom Apartment in Six Fountains Residential Estate">
+                    <h3>2-Bedroom Apartment - Six Fountains Residential Estate</h3>
+                    <p><strong>Description:</strong> Eco-friendly apartment focused on sustainability and shared facilities.</p>
+                    <p><strong>Extras:</strong> Solar power, green spaces.</p>
+                    <p><strong>Price:</strong> R1,700,000</p>
+                    <p><strong>Location:</strong> Silver Lakes Road, Pretoria-East.</p>
+                    <button class="view-details" data-property="sixfountains-2bed" onclick="toggleDetails('sixfountains-2bed')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-sixfountains-2bed">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A5/E1.jpg" alt="2-Bedroom Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A5/E2.jpg" alt="2-Bedroom Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A5/E3.jpg" alt="2-Bedroom Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A5/E4.jpg" alt="2-Bedroom Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A5/E5.jpg" alt="2-Bedroom Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A5/E6.jpg" alt="2-Bedroom Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A5/E7.jpg" alt="2-Bedroom Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A5/E8.jpg" alt="2-Bedroom Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A5/E9.jpg" alt="2-Bedroom Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A5/Crop320x213.jpg" alt="2-Bedroom Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('sixfountains-2bed', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('sixfountains-2bed', 1)">&#10095;</button>
+                        </div>
+                        <p>Luxurious Experience.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 6: 2-Bedroom Apartment - Greenlee Eco Estate -->
+                <div class="property-card" data-lifestyle="Johannesburg">
+                    <img src="Pictures/Eco Estate.jpg" alt="2-Bedroom Apartment in Greenlee Eco Estate">
+                    <h3>2-Bedroom Apartment - Greenlee Eco Estate</h3>
+                    <p><strong>Description:</strong> Eco-friendly apartment focused on sustainability and shared facilities.</p>
+                    <p><strong>Extras:</strong> Solar power, green spaces.</p>
+                    <p><strong>Price:</strong> R1,980,000</p>
+                    <p><strong>Location:</strong> Linbro Park, Sandton/Johannesburg.</p>
+                    <button class="view-details" data-property="eco-2bed" onclick="toggleDetails('eco-2bed')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-eco-2bed">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A6/F1.jpg" alt="2-Bedroom Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A6/F2.jpg" alt="2-Bedroom Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A6/F3.jpg" alt="2-Bedroom Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A6/F4.jpg" alt="2-Bedroom Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A6/F5.jpg" alt="2-Bedroom Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A6/F6.jpg" alt="2-Bedroom Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A6/F7.jpg" alt="2-Bedroom Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A6/F8.jpg" alt="2-Bedroom Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A6/F9.jpg" alt="2-Bedroom Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A6/Crop320x213.jpg" alt="2-Bedroom Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('eco-2bed', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('eco-2bed', 1)">&#10095;</button>
+                        </div>
+                        <p>Energy-efficient design with modern amenities.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 7: 2-Bedroom Apartment - Jackal Creek Golf Estate -->
+                <div class="property-card" data-lifestyle="Johannesburg">
+                    <img src="Pictures/Golf Estate.jpg" alt="2-Bedroom Apartment in Jackal Creek Golf Estate">
+                    <h3>2-Bedroom Apartment - Jackal Creek Golf Estate</h3>
+                    <p><strong>Description:</strong> Eco-friendly apartment focused on sustainability and shared facilities.</p>
+                    <p><strong>Extras:</strong> Solar power, green spaces.</p>
+                    <p><strong>Price:</strong> R1,150,000</p>
+                    <p><strong>Location:</strong> North Riding, Randburg/Johannesburg-North.</p>
+                    <button class="view-details" data-property="golf-2bed" onclick="toggleDetails('golf-2bed')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-golf-2bed">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A7/G1.jpg" alt="2-Bedroom Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A7/G2.jpg" alt="2-Bedroom Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A7/G3.jpg" alt="2-Bedroom Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A7/G4.jpg" alt="2-Bedroom Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A7/G5.jpg" alt="2-Bedroom Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A7/G6.jpg" alt="2-Bedroom Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A7/G7.jpg" alt="2-Bedroom Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A7/G8.jpg" alt="2-Bedroom Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A7/G9.jpg" alt="2-Bedroom Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A7/Crop320x213.jpg" alt="2-Bedroom Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('golf-2bed', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('golf-2bed', 1)">&#10095;</button>
+                        </div>
+                        <p>Energy-efficient design with modern amenities.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 8: Bachelor Apartment - Water Fall Estate -->
+                <div class="property-card" data-lifestyle="Pretoria">
+                    <img src="Pictures/Waterfall.jpg" alt="Bachelor Apartment in Elands Water Fall Estate">
+                    <h3>Bachelor Apartment - Water Fall Estate</h3>
+                    <p><strong>Description:</strong> Nature-inspired unit with basic security and reasonable pricing.</p>
+                    <p><strong>Extras:</strong> Hiking trails, pet-friendly.</p>
+                    <p><strong>Price:</strong> R1,000,000</p>
+                    <p><strong>Location:</strong> Near Alberton & Palm Ridge, Johannesburg-South.</p>
+                    <button class="view-details" data-property="Waterfall-bachelor" onclick="toggleDetails('Waterfall-bachelor')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-Waterfall-bachelor">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A8/H1.jpg" alt="Bachelor Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A8/H2.jpg" alt="Bachelor Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H3.jpg" alt="Bachelor Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H4.jpg" alt="Bachelor Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H5.jpg" alt="Bachelor Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H6.jpg" alt="Bachelor Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H7.jpg" alt="Bachelor Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H8.jpg" alt="Bachelor Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H9.jpg" alt="Bachelor Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A8/H10.jpg" alt="Bachelor Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('Waterfall-bachelor', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('Waterfall-bachelor', 1)">&#10095;</button>
+                        </div>
+                        <p>Cozy space surrounded by natural environment.</p>
+                    </div>
+                </div>
+                <!-- Apartment Card 9: Bachelor Apartment - Lions Rest Estate -->
+                <div class="property-card" data-lifestyle="Pretoria">
+                    <img src="Pictures/Lions.jpg" alt="Bachelor Apartment in Lions Rest Estate">
+                    <h3>Bachelor Apartment - Lions Rest Estate</h3>
+                    <p><strong>Description:</strong> Nature-inspired unit with basic security and reasonable pricing.</p>
+                    <p><strong>Extras:</strong> Hiking trails, pet-friendly.</p>
+                    <p><strong>Price:</strong> R490,000</p>
+                    <p><strong>Location:</strong> Albertsdal, Alberton/Johannesburg-South.</p>
+                    <button class="view-details" data-property="Lions-bachelor" onclick="toggleDetails('Lions-bachelor')">View Details</button>
+                    <div class="details-dropdown" id="dropdown-Lions-bachelor">
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="Pictures/apartments/A4/A3/C1.jpg" alt="Bachelor Interior 1" class="carousel-image active">
+                                <img src="Pictures/apartments/A4/A3/C2.jpg" alt="Bachelor Interior 2" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C3.jpg" alt="Bachelor Interior 3" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C4.jpg" alt="Bachelor Interior 4" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C5.jpg" alt="Bachelor Interior 5" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C6.jpg" alt="Bachelor Interior 6" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C7.jpg" alt="Bachelor Interior 7" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C8.jpg" alt="Bachelor Interior 8" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C9.jpg" alt="Bachelor Interior 9" class="carousel-image">
+                                <img src="Pictures/apartments/A4/A3/C10.jpg" alt="Bachelor Interior 10" class="carousel-image">
+                            </div>
+                            <button class="carousel-prev" onclick="changeSlide('Lions-bachelor', -1)">&#10094;</button>
+                            <button class="carousel-next" onclick="changeSlide('Lions-bachelor', 1)">&#10095;</button>
+                        </div>
+                        <p>Cozy space surrounded by natural environment.</p>
+                    </div>
+                </div>
+                <!-- Add more apartment cards as needed -->
+            </div>
+        </section>
+
+        <form action="https://formspree.io/f/mpwloreq" method="POST" enctype="multipart/form-data" class="rental-form">
+            <h2>Rental Application Form</h2>
+
+            <!-- Personal Details -->
+            <div class="section">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="Full Name" required>
+
+                <label for="idNumber">ID / Passport Number</label>
+                <input type="text" id="idNumber" name="ID Number" required>
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="Date of Birth" required>
+
+                <label for="phone">Mobile Number</label>
+                <input type="tel" id="phone" name="Phone" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="Email" required>
+            </div>
+
+            <!-- Employment Info -->
+            <div class="section">
+                <label for="employer">Current Employer</label>
+                <input type="text" id="employer" name="Employer" required>
+
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" name="Job Title">
+
+                <label for="workPhone">Work Phone</label>
+                <input type="tel" id="workPhone" name="Work Phone">
+
+                <label for="monthlyIncome">Gross Monthly Income (ZAR)</label>
+                <input type="number" id="monthlyIncome" name="Monthly Income" required>
+            </div>
+
+            <!-- Rental History -->
+            <div class="section">
+                <label for="currentAddress">Current Residential Address</label>
+                <textarea id="currentAddress" name="Current Address" rows="2" required></textarea>
+
+                <label for="landlordName">Current Landlord’s Full Name</label>
+                <input type="text" id="landlordName" name="Landlord Name">
+
+                <label for="landlordPhone">Landlord's Contact Number</label>
+                <input type="tel" id="landlordPhone" name="Landlord Phone">
+
+                <label for="durationAtAddress">How long have you lived here?</label>
+                <input type="text" id="durationAtAddress" name="Duration at Address">
+
+                <label for="reasonForLeaving">Reason for Leaving</label>
+                <input type="text" id="reasonForLeaving" name="Reason for Leaving">
+            </div>
+
+            <!-- References -->
+            <div class="section">
+                <label for="referenceName">Personal Reference (Full Name)</label>
+                <input type="text" id="referenceName" name="Reference Name" required>
+
+                <label for="referenceRelation">Relationship</label>
+                <input type="text" id="referenceRelation" name="Reference Relationship">
+
+                <label for="referencePhone">Reference Contact Number</label>
+                <input type="tel" id="referencePhone" name="Reference Phone" required>
+            </div>
+
+            <!-- Credit Check Section -->
+            <div class="section">
+                <label for="creditConsent">Do you consent to a credit check?</label>
+                <select id="creditConsent" name="Credit Consent" required>
+                    <option value="">-- Select an option --</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="creditHistory">Have you ever been declared insolvent or had a judgment against you?</label>
+                <select id="creditHistory" name="Credit History" required>
+                    <option value="">-- Select an option --</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+
+                <label for="declarationDetails">If Yes, please explain</label>
+                <textarea id="declarationDetails" name="Credit Explanation" rows="3"></textarea>
+            </div>
+
+            <!-- Document Upload -->
+            <div class="section">
+                <label for="documentUpload">Upload Documents (ID, Proof of Income, etc.)</label>
+                <input type="file" id="documentUpload" name="attachment" accept=".pdf,.jpg,.jpeg,.png">
+            </div>
+
+            <!-- Declaration -->
+            <div class="section">
+                <p class="consent-text">
+                    I hereby declare that the information provided in this application is true and correct. I authorize the landlord or agent to verify the details provided and to obtain a credit report for the purposes of evaluating this application. I understand that submitting this application does not guarantee approval.
+                </p>
+                <label>
+                    <input type="checkbox" name="Agreement" required>
+                    I agree to the above terms and authorize a credit check.
+                </label>
+            </div>
+
+            <!-- Redirect on success -->
+            <input type="hidden" name="_redirect" value="https://Trinityproperty.co.za/thank-you.html">
+
+            <button type="submit">Submit Application</button>
+        </form>
+
+        <section class="why-estates">
+            <h2>Why Choose Our Estates?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-tree benefit-icon"></i>
+                    <h3>Sustainability</h3>
+                    <p>Eco-friendly designs with solar power and water-saving systems for a greener future.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt benefit-icon"></i>
+                    <h3>Security</h3>
+                    <p>24/7 security, gated access, and advanced surveillance for peace of mind.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-users benefit-icon"></i>
+                    <h3>Community</h3>
+                    <p>Vibrant communities with shared spaces, events, and amenities for all ages.</p>
+                </div>
+            </div>
+        </section>
+        <section class="agents-section">
+            <h2>Meet Our Agents</h2>
+            <div class="agents-grid">
+                <div class="agent">
+                    <img src="Pictures/AGENT7.jpg" alt="Buhlebenkosi Mbatha" class="agent-photo">
+                    <h4>Naledi Mbatha</h4>
+                    <h4>Head Agent</h4>
+                    <p><strong>Estate:</strong> Lions Rest Estate</p>
+                    <p><strong>Email:</strong> N.Mbatha@Monumentpropertygroup.co.za</p>
+                    <p><strong></strong></p>
+                    <a href="https://wa.me/0835657270" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+                <div class="agent">
+                    <img src="Pictures/AGENT1.jpg" alt="Anika van der Merwe" class="agent-photo">
+                    <h4>Anika van der Merwe</h4>
+                    <p><strong>Estate:</strong> The Blyde Riverwalk</p>
+                    <p><strong>Email:</strong> Anika.der Merwe@Monumentpropertygroup.co.za</p>
+                    <p><strong></strong> </p>
+                    <a href="https://wa.me/0835657270" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+                <div class="agent">
+                    <img src="Pictures/AGENT2.jpg" alt="Sipho Dlamini" class="agent-photo">
+                    <h4>Sipho Dlamini</h4>
+                    <p><strong>Estate:</strong> Elands Rock</p>
+                    <p><strong>Email:</strong> Sipho.D@Monumentpropertygroup.co.za</p>
+                    <p><strong></strong> </p>
+                    <a href="https://wa.me/0718019409" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+                <div class="agent">
+                    <img src="Pictures/AGENT3.jpg" alt="Themba Nkosi" class="agent-photo">
+                    <h4>Themba Nkosi</h4>
+                    <p><strong>Estate:</strong> Andeon Estate</p>
+                    <p><strong>Email:</strong> Themba.N@Monumentpropertygroup.co.za</p>
+                    <p><strong></strong> </p>
+                    <a href="https://wa.me/0718019409" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+                <div class="agent">
+                    <img src="Pictures/AGENT4.jpg" alt="Kagiso Molefe" class="agent-photo">
+                    <h4>Kagiso Molefe</h4>
+                    <p><strong>Estate:</strong> Six Fountains</p>
+                    <p><strong>Email:</strong> Kagiso.M@Monumentpropertygroup.co.za</p>
+                    <p><strong></strong></p>
+                    <a href="https://wa.me/0718019409" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+                <div class="agent">
+                    <img src="Pictures/AGENT5.jpg" alt="Thandeka Mokoena" class="agent-photo">
+                    <h4>Thandeka Mokoena</h4>
+                    <p><strong>Estate:</strong> Greenlee Eco</p>
+                    <p><strong>Email:</strong> Thandeka.M@Monumentpropertygroup.co.za</p>
+                    <p><strong></strong> </p>
+                    <a href="https://wa.me/0835657270" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+                <div class="agent">
+                    <img src="Pictures/AGENT6.jpg" alt="Zinthle Mathebela" class="agent-photo">
+                    <h4>Zinthle Mathebela</h4>
+                    <p><strong>Estate:</strong> Jackal Creek</p>
+                    <p><strong>Email:</strong> Zinthle.M@Monumentpropertygroup.co.za</p>
+                    <p><strong></strong> </p>
+                    <a href="https://wa.me/0835657270" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+            </div>
+        </section> 
+    </main>
+    <footer>
+        <p>&copy; 2025 Monument Properties. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a> 
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

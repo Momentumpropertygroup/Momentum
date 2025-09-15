@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Monument Properties</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="Pictures/Logo.jpg" alt="Trinity Properties Logo">
+            <div class="company-name">
+                <span class="Trinity">Monument</span><span class="Properties">Properties</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Real-Estate.html">Properties</a>
+            <a href="Services.html">Services</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="WhyUs.html">Why Us?</a>
+        </nav>
+        <div class="icons-container">
+            <div class="search-container">
+                <form id="search-form">
+                    <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+                    <input type="text" id="search-input" class="search-bar" placeholder="Search Properties...">
+                </form>
+            </div>
+            <div class="user-container">
+                <i class="fas fa-user" onclick="toggleAuthModal()"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login/Signup Modal -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-form">
+            <span class="close-btn" onclick="toggleAuthModal()">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="showTab('login')">Login</button>
+                <button class="tab-btn" onclick="showTab('signup')">Sign Up</button>
+            </div>
+            <!-- Login Form -->
+            <div class="form-section active" id="login">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="Email" placeholder="Enter your email" required>
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="Password" placeholder="Enter your password" required>
+                    <button type="submit">Login</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+            <!-- Signup Form -->
+            <div class="form-section" id="signup">
+                <form action="https://formspree.io/f/mpwloreq" method="POST">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" name="Full Name" placeholder="Enter your full name" required>
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="Email" placeholder="Enter your email" required>
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="Password" placeholder="Create a password" required>
+                    <button type="submit">Sign Up</button>
+                    <input type="hidden" name="_redirect" value="https://example.com/welcome.html">
+                </form>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section class="services-hero">
+            <h1>Monument Spa & Wellness Services</h1>
+            <p>A sanctuary of rejuvenation for body, mind, and spirit.</p>
+        </section>
+        <section class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-spa service-icon"></i>
+                <h3>Signature Massages</h3>
+                <p>Indulge in Swedish, Deep Tissue, Aromatherapy, or Hot Stone massages tailored to your needs.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-leaf service-icon"></i>
+                <h3>Skincare Treatments</h3>
+                <p>Custom facials, anti-aging therapy, and dermal hydration for radiant skin.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-water service-icon"></i>
+                <h3>Hydrotherapy Pools</h3>
+                <p>Relax in hot tubs, cold plunges, or therapeutic jets for ultimate relaxation.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hot-tub-person service-icon"></i>
+                <h3>Sauna & Steam Rooms</h3>
+                <p>Detox and de-stress in our modern heat zones.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-pray service-icon"></i>
+                <h3>Yoga & Mindfulness</h3>
+                <p>Guided sessions led by certified instructors to balance mind and body.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-heart service-icon"></i>
+                <h3>Couple's Retreats</h3>
+                <p>Private spa rooms and packages for you and a loved one.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-mug-hot service-icon"></i>
+                <h3>Wellness Cafe</h3>
+                <p>Healthy smoothies, detox teas, and vitamin-rich snacks to nourish your body.</p>
+            </div>
+        </section>
+        <section class="services-description">
+            <div class="content-wrapper">
+                <h2>Designed for Tranquility</h2>
+                <p>Each spa is crafted with natural materials, ambient lighting, and modern luxury to create an environment where you can truly unwind and rejuvenate.</p>
+            </div>
+        </section>
+        <section class="bookings-page">
+        <form class="booking-form" action="https://formspree.io/f/mpwloreq" method="POST">
+            <h2>Book Your Experience</h2>
+            <p>Ready to rejuvenate? Schedule your spa session today and step into a world of relaxation.</p>
+
+            <!-- Personal Details -->
+            <div class="form-section">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="Full Name" placeholder="Enter your full name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="Email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="Phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <!-- Booking Details -->
+            <div class="form-section">
+                <label for="service">Select Service</label>
+                <select id="service" name="Service" required>
+                    <option value="">-- Select a service --</option>
+                    <option value="Massage">Massage Therapy</option>
+                    <option value="Facial">Facial Treatment</option>
+                    <option value="Manicure">Manicure & Pedicure</option>
+                    <option value="Sauna">Sauna Session</option>
+                    <option value="FullSpa">Full Spa Package</option>
+                </select>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="Date" required>
+
+                <label for="time">Preferred Time</label>
+                <input type="time" id="time" name="Time" required>
+            </div>
+
+            <!-- Special Requests -->
+            <div class="form-section">
+                <label for="requests">Special Requests</label>
+                <textarea id="requests" name="Special Requests" placeholder="Any special requests or preferences?" rows="4"></textarea>
+            </div>
+
+            <!-- Hidden Redirect -->
+            <input type="hidden" name="_redirect" value="https://example.com/thank-you.html">
+
+            <!-- Submit Button -->
+            <button type="submit" class="book-now-btn">Book Now</button>
+        </form>
+    </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Monument Properties. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
